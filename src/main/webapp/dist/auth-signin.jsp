@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,10 +19,10 @@
 	<meta name="keywords" content="">
 	<meta name="author" content="Phoenixcoded" />
 	<!-- Favicon icon -->
-	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="dist/assets/images/favicon.ico" type="image/x-icon">
 
 	<!-- vendor css -->
-	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="dist/assets/css/style.css">
 	
 	
 
@@ -36,22 +37,27 @@
 				<div class="col-md-12">
 					<div class="card-body">
 						<img src="assets/images/logo-dark.png" alt="" class="img-fluid mb-4">
-						<h4 class="mb-3 f-w-400">Signin</h4>
+						<h4 class="mb-3 f-w-400">Login</h4>
+						  <c:if test="${mensaje != null}">
+				            <div>${mensaje}</div>
+				        </c:if>
+						<form action="Login" method="post">
 						<div class="form-group mb-3">
 							<label class="floating-label" for="Email">Email address</label>
-							<input type="text" class="form-control" id="Email" placeholder="">
+							<input type="text" class="form-control" value="${usuario.usua_correo}" name="correo" id="Email" placeholder="">
 						</div>
 						<div class="form-group mb-4">
 							<label class="floating-label" for="Password">Password</label>
-							<input type="password" class="form-control" id="Password" placeholder="">
+							<input type="password" class="form-control" value="${usuario.usua_clave}" name="clave" id="Password" placeholder="">
 						</div>
 						<div class="custom-control custom-checkbox text-left mb-4 mt-2">
 							<input type="checkbox" class="custom-control-input" id="customCheck1">
 							<label class="custom-control-label" for="customCheck1">Save credentials.</label>
 						</div>
-						<button class="btn btn-block btn-primary mb-4">Signin</button>
+						<button class="btn btn-block btn-primary mb-4" type="submit">Ingresar</button>
 						<p class="mb-2 text-muted">Forgot password? <a href="auth-reset-password.html" class="f-w-400">Reset</a></p>
 						<p class="mb-0 text-muted">Don’t have an account? <a href="auth-signup.html" class="f-w-400">Signup</a></p>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -61,10 +67,10 @@
 <!-- [ auth-signin ] end -->
 
 <!-- Required Js -->
-<script src="assets/js/vendor-all.min.js"></script>
-<script src="assets/js/plugins/bootstrap.min.js"></script>
-<script src="assets/js/ripple.js"></script>
-<script src="assets/js/pcoded.min.js"></script>
+<script src="dist/assets/js/vendor-all.min.js"></script>
+<script src="dist/assets/js/plugins/bootstrap.min.js"></script>
+<script src="dist/assets/js/ripple.js"></script>
+<script src="dist/assets/js/pcoded.min.js"></script>
 
 
 
