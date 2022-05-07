@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConectaBD {
-    public String db = "prueba";
-    public String url = "jdbc:mysql://localhost/"+db;
-    public String user = "root";
-    public String pass = "";
+    public String db = "softech";
+    public String url = "jdbc:mysql://db4free.net/"+db;
+    public String user = "softech";
+    public String pass = "softech2022";
 
 
    public Connection Conectar(){
