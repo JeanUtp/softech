@@ -14,29 +14,26 @@ public class UsuarioValidator {
         this.usuarioDao = new UsuarioDaoImpl();
     }
     
-	public String usuarioLogin(String correo, String clave) {
-		StringBuilder result = new StringBuilder("<ol>");
+	public String usuarioLogin(String usuario, String clave) {
+		StringBuilder result = new StringBuilder("");
 		 
-		if(correo == null || correo.trim().length() == 0) {
-			result.append("<li>Correo requerido</li>");
+		if(usuario == null || usuario.trim().length() == 0) {
+			result.append("Correo requerido");
 		}
 		
 		if(clave== null || clave.trim().length() == 0) {
-			result.append("<li>Clave requerida</li>");
+			result.append("Clave requerida");
 		}
 		
-		Usuario usuario = new Usuario();
+		Usuario user = new Usuario();
 		
-		if(result.length() == 4) {
-			usuario = usuarioDao.UsuarioLogin(correo,clave);
+		if(result.length() == 0) {
+			user = usuarioDao.UsuarioLogin(usuario,clave);
 			
-			if(usuario.getUsua_correo() == null || usuario.getUsua_clave() == null) {
-				result.append("<li>Correo o clave incorrecta</li>");
+			if(user.getNombre_usuario() == null || user.getContrasena() == null) {
+				result.append("Correo o clave incorrecta");
 			}
 		}
-		if(result.length()>4) {
-			
-		}
-	 	return result.length() == 4 ? null : result.append("</ol>").toString();
+	 	return result.length() == 0 ? null : result.toString();
 	}
 }

@@ -39,20 +39,20 @@
 						<img src="assets/images/logo-dark.png" alt="" class="img-fluid mb-4">
 						<h4 class="mb-3 f-w-400">Login</h4>
 						  <c:if test="${mensaje != null}">
-				            <div>${mensaje}</div>
+				            <div><p style="color:red">${mensaje}</p></div><br>
 				        </c:if>
 						<form action="Login" method="post">
 						<div class="form-group mb-3">
-							<label class="floating-label" for="Email">Email address</label>
-							<input type="text" class="form-control" value="${usuario.usua_correo}" name="correo" id="Email" placeholder="">
+							<label class="floating-label" for="Email">Usuario</label>
+							<input type="text" class="form-control" value="${usuario.nombre_usuario}" name="usuario" id="Email" placeholder="">
 						</div>
 						<div class="form-group mb-4">
-							<label class="floating-label" for="Password">Password</label>
-							<input type="password" class="form-control" value="${usuario.usua_clave}" name="clave" id="Password" placeholder="">
+							<label class="floating-label" for="Password">Contraseña</label>
+							<input type="password" class="form-control" value="${usuario.contrasena}" name="clave" id="Password" placeholder="">
 						</div>
 						<div class="custom-control custom-checkbox text-left mb-4 mt-2">
 							<input type="checkbox" class="custom-control-input" id="customCheck1">
-							<label class="custom-control-label" for="customCheck1">Save credentials.</label>
+							<label class="custom-control-label" for="customCheck1">Guardar credenciales</label>
 						</div>
 						<button class="btn btn-block btn-primary mb-4" type="submit">Ingresar</button>
 						<p class="mb-2 text-muted">Forgot password? <a href="auth-reset-password.html" class="f-w-400">Reset</a></p>

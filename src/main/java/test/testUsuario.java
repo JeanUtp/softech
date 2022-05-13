@@ -12,10 +12,10 @@ public class testUsuario {
         System.out.println("**LOGIN DE USUARIO**");
         UsuarioDao usuarioDao = new UsuarioDaoImpl();
         try {
-            Usuario u = usuarioDao.UsuarioLogin("admin@gmail.com", "123456");
-            System.out.println("Correo: " + u.getUsua_correo());
-            System.out.println("Clave: " + u.getUsua_clave());
-            System.out.println("ID: " + u.getUsua_id());
+            Usuario u = usuarioDao.UsuarioLogin("admin", "123456");
+            System.out.println("Usuario: " + u.getNombre_usuario());
+            System.out.println("Clave: " + u.getContrasena());
+            System.out.println("ID: " + u.getId_usuario());
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }

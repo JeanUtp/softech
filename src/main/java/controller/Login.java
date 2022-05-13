@@ -42,7 +42,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    response.setContentType("text/html;charset=UTF-8");
         
-        String correo = request.getParameter("correo");
+        String usuario = request.getParameter("usuario");
         String clave = request.getParameter("clave");
         String result = "";
         
@@ -50,13 +50,14 @@ public class Login extends HttpServlet {
         Usuario user = new Usuario();
         
         try {
-        	result = validator.usuarioLogin(correo,clave);
+        	result = validator.usuarioLogin(usuario,clave);
         	
         	if(result == null) {
         		response.sendRedirect("");
         	}else {
-        		user.setUsua_clave(clave);
-            	user.setUsua_correo(correo);
+        		user.setNombre_usuario(usuario);
+        		user.setContrasena(clave);
+    
             	request.setAttribute("usuario", user);
             	request.setAttribute("mensaje", result);
             	RequestDispatcher dispatcher = request.getRequestDispatcher("dist/auth-signin.jsp");
