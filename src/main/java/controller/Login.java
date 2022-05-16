@@ -47,14 +47,15 @@ public class Login extends HttpServlet {
         String result = "";
         
         UsuarioValidator validator = new UsuarioValidator(request);
-        Usuario user = new Usuario();
+
         
         try {
         	result = validator.usuarioLogin(usuario,clave);
         	
         	if(result == null) {
-        		response.sendRedirect("");
+        		response.sendRedirect("/softech_web");
         	}else {
+                Usuario user = new Usuario();
         		user.setNombre_usuario(usuario);
         		user.setContrasena(clave);
     

@@ -4,7 +4,7 @@
 
 <head>
 
-	<title>Ablepro v8.0 bootstrap admin template by Phoenixcoded</title>
+	<title>softech</title>
 	<!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 11]>
@@ -43,11 +43,11 @@
 				        </c:if>
 						<form action="login" method="post">
 						<div class="form-group mb-3">
-							<label class="floating-label" for="Email">Usuario</label>
+							<label for="Email" style="float:left">Usuario</label>
 							<input type="text" class="form-control" value="${usuario.nombre_usuario}" name="usuario" id="Email" placeholder="">
 						</div>
 						<div class="form-group mb-4">
-							<label class="floating-label" for="Password">Contraseña</label>
+							<label for="Password" style="float:left">Contraseña</label>
 							<input type="password" class="form-control" value="${usuario.contrasena}" name="clave" id="Password" placeholder="">
 						</div>
 						<div class="custom-control custom-checkbox text-left mb-4 mt-2">
@@ -55,8 +55,7 @@
 							<label class="custom-control-label" for="customCheck1">Guardar credenciales</label>
 						</div>
 						<button class="btn btn-block btn-primary mb-4" type="submit">Ingresar</button>
-						<p class="mb-2 text-muted">Forgot password? <a href="auth-reset-password.html" class="f-w-400">Reset</a></p>
-						<p class="mb-0 text-muted">Donâ€™t have an account? <a href="auth-signup.html" class="f-w-400">Signup</a></p>
+						<p class="mb-2 text-muted">Olvidaste tu contraseña? <a href="auth-reset-password.html" class="f-w-400">Recuperar</a></p>
 						</form>
 					</div>
 				</div>

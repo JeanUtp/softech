@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Index
+ * Servlet implementation class Dashboard
  */
 @WebServlet("")
-public class Index extends HttpServlet {
-	private static final long serialVersionUID = 3L;
+public class Dashboard extends HttpServlet {
+	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Index() {
+    public Dashboard() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,6 +31,7 @@ public class Index extends HttpServlet {
 		// TODO Auto-generated method stub
 		RequestDispatcher dispatcher = request.getRequestDispatcher("dist/index.jsp");
         dispatcher.forward(request, response);
+        
 	}
 
 	/**

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.Usuario;
 import validator.UsuarioValidator;
 
 /**
@@ -19,11 +18,6 @@ import validator.UsuarioValidator;
 public class UsuarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-
-	}
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -39,18 +33,23 @@ public class UsuarioController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String idparametro = request.getParameter("id");
 
 		UsuarioValidator validator = new UsuarioValidator(request);
+		validator.listarUsuarios();
 
-		try {
-			String result = validator.listarUsuarios();
+		if (idparametro != null) {
+			Integer id = Integer.parseInt(idparametro);
+			validator.eliminarUsuario(id);
+			
+			response.sendRedirect("/softech_web/usuario");
+		}else {
 
-		} catch (Exception e) {
-
+			RequestDispatcher dispatcher = request.getRequestDispatcher("dist/mantenimiento/usuario.jsp");
+			dispatcher.forward(request, response);
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("dist/mantenimiento/usuario.jsp");
-		dispatcher.forward(request, response);
+
 	}
 
 	/**
@@ -60,7 +59,6 @@ public class UsuarioController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request, response);
 	}
 
 }

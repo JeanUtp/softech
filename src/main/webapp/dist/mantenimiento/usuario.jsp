@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Ablepro v8.0 bootstrap admin template by Phoenixcoded</title>
+    <title>softech</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -33,9 +33,12 @@
 				
 				<div class="">
 					<div class="main-menu-header">
-						<img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="User-Profile-Image">
+						<img class="img-radius" src="https://www.coordinadora.com/wp-content/uploads/sidebar_usuario-corporativo.png"
+							alt="User-Profile-Image">
 						<div class="user-details">
-							<div id="more-details">UX Designer <i class="fa fa-caret-down"></i></div>
+							<div id="more-details">
+								Administrador <i class="fa fa-caret-down"></i>
+							</div>
 						</div>
 					</div>
 					<div class="collapse" id="nav-user-link">
@@ -49,10 +52,16 @@
 				
 				<ul class="nav pcoded-inner-navbar ">
 					<li class="nav-item pcoded-menu-caption">
-					    <label>Navigation</label>
+					    <label>Navegación</label>
 					</li>
 					<li class="nav-item">
-					    <a href="index.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+					    <a href="/softech_web" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+					</li>
+					<li class="nav-item pcoded-hasmenu">
+					    <a href="#" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Mantenimiento</span></a>
+					    <ul class="pcoded-submenu">
+					        <li><a href="/softech_web/usuario" >Usuarios</a></li>
+					    </ul>
 					</li>
 					<li class="nav-item pcoded-hasmenu">
 					    <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Page layouts</span></a>
@@ -261,8 +270,8 @@
                             <h5 class="m-b-10">Mantenimiento</h5>
                         </div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#">Usuario</a></li>
+                            <li class="breadcrumb-item"><a href="/softech_web"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Usuarios</a></li>
                         </ul>
                     </div>
                 </div>
@@ -277,8 +286,8 @@
                         <h5>Usuarios</h5>
                         <!--  <span class="d-block m-t-5">use class <code>table-hover</code> inside table element</span>-->
                     
-                    	<br><br><button type="button" class="btn btn-primary" ><i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                            Nuevo</button>
+                    	<br><br><a href="usuarioRegistro" role="button" class="btn btn-primary" ><i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                            Nuevo</a>
                     </div>
                     <div class="card-body table-border-style">
                         <div class="table-responsive">
@@ -302,14 +311,14 @@
 		                                    <td><c:out value="${s.tipo_usuario}" /></td>
 		                                    <td>
 		                                    <c:if test="${s.estado == 1}">Activo</c:if>
-		                                    <c:if test="${s.estado == 2}">Inactivo</c:if>
+		                                    <c:if test="${s.estado == 0}">Inactivo</c:if>
 		                                    
 		                                    </td>
 		                                    <td>
-		                                     <button type="button" class="btn btn-primary" ><i class="fas fa-edit"></i>
-                                            Editar</button>
-                                            <button type="button" class="btn btn-danger" ><i class="fas fa-trash"></i>
-                                            Eliminar</button>
+		                                     <a href="usuarioRegistro?id=${s.id_usuario} " role="button" class="btn btn-primary" ><i class="fas fa-edit"></i>
+                                            Editar</a>
+                                            <a href="usuario?id=${s.id_usuario} " role="button" class="btn btn-danger" ><i class="fas fa-trash"></i>
+                                            Eliminar</a>
 		                                    </td>
 		                                </tr>
 		                            </c:forEach>  
