@@ -15,7 +15,7 @@ import validator.UsuarioValidator;
 /**
  * Servlet implementation class Login
  */
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
+@WebServlet(name = "Login", urlPatterns = {"/login"})
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
@@ -32,7 +32,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher = request.getRequestDispatcher("dist/auth-signin.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("dist/login.jsp");
         dispatcher.forward(request, response);
 	}
 
@@ -60,7 +60,7 @@ public class Login extends HttpServlet {
     
             	request.setAttribute("usuario", user);
             	request.setAttribute("mensaje", result);
-            	RequestDispatcher dispatcher = request.getRequestDispatcher("dist/auth-signin.jsp");
+            	RequestDispatcher dispatcher = request.getRequestDispatcher("dist/login.jsp");
                 dispatcher.forward(request, response);
         	}
 

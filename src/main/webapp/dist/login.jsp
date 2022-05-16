@@ -41,7 +41,7 @@
 						  <c:if test="${mensaje != null}">
 				            <div><p style="color:red">${mensaje}</p></div><br>
 				        </c:if>
-						<form action="Login" method="post">
+						<form action="login" method="post">
 						<div class="form-group mb-3">
 							<label class="floating-label" for="Email">Usuario</label>
 							<input type="text" class="form-control" value="${usuario.nombre_usuario}" name="usuario" id="Email" placeholder="">
