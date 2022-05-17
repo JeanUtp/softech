@@ -368,19 +368,29 @@
 										<label for="inputState">Rol de Usuario</label> <select
 											id="inputState" class="form-control" name="txtRol">
 											<option value="">seleccionar</option>
-											<option value="Administrador">Administrador</option>
+											<c:choose>
+											    <c:when test="${usuario.tipo_usuario=='Administrador'}">
+											       <option value="Administrador" selected>Administrador</option> 
+											    </c:when>    
+											    <c:otherwise>
+													<option value="Administrador">Administrador</option>											        <br />
+											    </c:otherwise>
+											</c:choose>
+											<c:choose>
+											    <c:when test="${usuario.tipo_usuario=='Registrador'}">
+													<option value="Registrador" selected>Registrador</option>
+											    </c:when>    
+											    <c:otherwise>
+													<option value="Registrador">Registrador</option>
+											    </c:otherwise>
+											</c:choose>
+											
 
 										</select>
 									</div>
 									<div class="form-group col-md-6"></div>
 								</div>
-								<div class="form-group">
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox"
-											name="txtEstado" id="gridCheck"> <label
-											class="form-check-label" for="gridCheck">Activo</label>
-									</div>
-								</div>
+								
 								<c:if test="${mensaje != null}">
 									<div>
 										<p style="color: red">${mensaje}</p>

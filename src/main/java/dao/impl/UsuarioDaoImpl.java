@@ -25,7 +25,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT ")
                 .append("*")
-                .append(" FROM usuario");
+                .append(" FROM usuario WHERE estado <> 0");
         
         try (Connection cn = conectaBD.Conectar()) {
             PreparedStatement ps = cn.prepareStatement(sql.toString());
@@ -54,7 +54,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	public Usuario seleccionarUsuario(Integer id_usuario) {
 		Usuario user = new Usuario();
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT ").append("*").append(" FROM usuario").append(" WHERE id_usuario = ?");
+		sql.append("SELECT ").append("*").append(" FROM usuario").append(" WHERE id_usuario = ?")
+		.append(" AND estado <> 0");
 
 		try (Connection cn = conectaBD.Conectar()) {
 			PreparedStatement ps = cn.prepareStatement(sql.toString());
@@ -129,9 +130,11 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	}
 
 	@Override
-	public String eliminarUsuario(Integer id_usuario) {
+	public String deshabilitarUsuario(Integer id_usuario) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("DELETE FROM usuario").append(" WHERE id_usuario = ?");
+		sql.append("UPDATE usuario")
+		.append(" SET estado = 0")
+		.append(" WHERE id_usuario = ?");
 
 		try (Connection cn = conectaBD.Conectar()) {
 			PreparedStatement ps = cn.prepareStatement(sql.toString());
@@ -152,7 +155,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		Usuario user = new Usuario();
 
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT").append(" * FROM usuario ").append("WHERE nombre_usuario = ? AND contrasena = ? ");
+		sql.append("SELECT").append(" * FROM usuario ")
+		.append("WHERE nombre_usuario = ? AND contrasena = ? AND estado <> 0 ");
 
 		try (Connection cn = conectaBD.Conectar()) {
 			PreparedStatement ps = cn.prepareStatement(sql.toString());

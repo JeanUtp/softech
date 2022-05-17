@@ -12,7 +12,7 @@ public interface UsuarioDao {
 	
 	String actualizarUsuario (Usuario user);
 	
-	String eliminarUsuario (Integer id_usuario);
+	String deshabilitarUsuario (Integer id_usuario);
 	
 	List<Usuario> listarUsuarios ();
 	

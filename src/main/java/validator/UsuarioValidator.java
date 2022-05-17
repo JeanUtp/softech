@@ -30,11 +30,11 @@ public class UsuarioValidator {
 		StringBuilder result = new StringBuilder("");
 
 		if (usuario == null || usuario.trim().length() == 0) {
-			result.append("Correo requerido");
+			result.append("Usuario requerido");
 		}
 
 		if (clave == null || clave.trim().length() == 0) {
-			result.append("Clave requerida");
+			result.append("Contraseña requerida");
 		}
 
 		Usuario user = new Usuario();
@@ -43,7 +43,7 @@ public class UsuarioValidator {
 			user = usuarioDao.UsuarioLogin(usuario, clave);
 
 			if (user.getNombre_usuario() == null || user.getContrasena() == null) {
-				result.append("Correo o clave incorrecta");
+				result.append("Usuario o contraseña incorrecta");
 			}
 		}
 		return result.length() == 0 ? null : result.toString();
@@ -60,9 +60,9 @@ public class UsuarioValidator {
 		return result;
 	}
 	
-	public String eliminarUsuario(Integer id) {
+	public String deshabilitarUsuario(Integer id) {
 		String result = null;
-		result = usuarioDao.eliminarUsuario(id);
+		result = usuarioDao.deshabilitarUsuario(id);
 		return result;
 	}
 
@@ -76,7 +76,6 @@ public class UsuarioValidator {
 		String nombres = request.getParameter("txtNombres").trim();
 		String apellidos = request.getParameter("txtApellidos").trim();
 		String rol = request.getParameter("txtRol").trim();
-		Integer estado = (request.getParameter("txtEstado") == null) ? 0 : 1;
 		String nombre_usuario = request.getParameter("txtUsuario").trim();
 		String contrasena = request.getParameter("txtContrasena").trim();
 
@@ -115,7 +114,7 @@ public class UsuarioValidator {
 		usuario.setNombres(nombres);
 		usuario.setNombre_usuario(nombre_usuario);
 		usuario.setContrasena(contrasena);
-		usuario.setEstado(estado);
+		usuario.setEstado(1);
 		usuario.setTipo_usuario(rol);
 	
 

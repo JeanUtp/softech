@@ -31,7 +31,7 @@ public class testUsuario {
 		try {
 			Usuario seleccionarUsuario = new Usuario();
 
-			seleccionarUsuario = usuarioDao.seleccionarUsuario(1);
+			seleccionarUsuario = usuarioDao.seleccionarUsuario(20);
 			
 			System.out.println("ID: " + seleccionarUsuario.getId_usuario());
 			System.out.println("User: " + seleccionarUsuario.getNombre_usuario());
@@ -52,7 +52,7 @@ public class testUsuario {
 		System.out.println("**INSERTAR USUARIO**");
 		try {
 			Usuario nuevoUsuario = new Usuario();
-			nuevoUsuario.setNombre_usuario("user1");
+			nuevoUsuario.setNombre_usuario("alias2");
 			nuevoUsuario.setNombres("Fernando Paulo");
 			nuevoUsuario.setApellidos("Perez Ramon");
 			nuevoUsuario.setTipo_usuario("administrador");
@@ -75,18 +75,18 @@ public class testUsuario {
 		System.out.println("**ACTUALIZAR USUARIO**");
 		try {
 			Usuario usuarioExistente = new Usuario();
-			usuarioExistente.setNombre_usuario("user2");
+			usuarioExistente.setNombre_usuario("admin");
 			usuarioExistente.setNombres("Fernando Paulo");
-			usuarioExistente.setApellidos("Perez Ramon");
+			usuarioExistente.setApellidos("Perez Palomino");
 			usuarioExistente.setTipo_usuario("administrador");
 			usuarioExistente.setEstado(1);
 			usuarioExistente.setContrasena("123456");
-			usuarioExistente.setId_usuario(3);
+			usuarioExistente.setId_usuario(20);
 
-			String mensajeInsertar = (usuarioDao.actualizarUsuario(usuarioExistente)) == null ?
+			String mensajeActualizar = (usuarioDao.actualizarUsuario(usuarioExistente)) == null ?
 					"Exito": "No se logro";
 			
-			System.out.println("Respuesta: " + mensajeInsertar);
+			System.out.println("Respuesta: " + mensajeActualizar);
 			
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
@@ -100,10 +100,10 @@ public class testUsuario {
 		System.out.println("**ELIMINAR USUARIO**");
 		try {
 
-			String mensajeInsertar = (usuarioDao.eliminarUsuario(6)) == null ?
+			String mensajeDeshabilitar = (usuarioDao.deshabilitarUsuario(20)) == null ?
 					"Exito": "No se logro";
 			
-			System.out.println("Respuesta: " + mensajeInsertar);
+			System.out.println("Respuesta: " + mensajeDeshabilitar);
 			
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());

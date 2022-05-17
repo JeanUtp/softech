@@ -40,7 +40,7 @@ public class UsuarioController extends HttpServlet {
 
 		if (idparametro != null) {
 			Integer id = Integer.parseInt(idparametro);
-			validator.eliminarUsuario(id);
+			validator.deshabilitarUsuario(id);
 			
 			response.sendRedirect("/softech_web/usuario");
 		}else {

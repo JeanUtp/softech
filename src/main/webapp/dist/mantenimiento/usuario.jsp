@@ -298,7 +298,6 @@
                                         <th>Nombres</th>
                                         <th>Apellidos</th>
                                         <th>Rol</th>
-                                        <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -310,15 +309,10 @@
 		                                    <td><c:out value="${s.apellidos}" /></td>               
 		                                    <td><c:out value="${s.tipo_usuario}" /></td>
 		                                    <td>
-		                                    <c:if test="${s.estado == 1}">Activo</c:if>
-		                                    <c:if test="${s.estado == 0}">Inactivo</c:if>
-		                                    
-		                                    </td>
-		                                    <td>
 		                                     <a href="usuarioRegistro?id=${s.id_usuario} " role="button" class="btn btn-primary" ><i class="fas fa-edit"></i>
                                             Editar</a>
                                             <a href="usuario?id=${s.id_usuario} " role="button" class="btn btn-danger" ><i class="fas fa-trash"></i>
-                                            Eliminar</a>
+                                            Deshabilitar</a>
 		                                    </td>
 		                                </tr>
 		                            </c:forEach>  
