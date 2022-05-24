@@ -11,26 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import validator.UsuarioValidator;
 
-/**
- * Servlet implementation class UsuarioController
- */
+//VISTA LISTADO
 @WebServlet(name = "UsuarioController", urlPatterns = { "/usuario" })
 public class UsuarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public UsuarioController() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	
+	//LISTADO - ELIMINAR (DESHABILITAR) 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String idparametro = request.getParameter("id");
@@ -38,11 +30,11 @@ public class UsuarioController extends HttpServlet {
 		UsuarioValidator validator = new UsuarioValidator(request);
 		validator.listarUsuarios();
 
-		if (idparametro != null) {
+		if (idparametro != null) { //idparametro tiene contenido
 			Integer id = Integer.parseInt(idparametro);
 			validator.deshabilitarUsuario(id);
 			
-			response.sendRedirect("/softech_web/usuario");
+			response.sendRedirect("/softech_web/usuario");//<a href="/softech_web/usuario">
 		}else {
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("dist/mantenimiento/usuario.jsp");
@@ -52,13 +44,9 @@ public class UsuarioController extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 }

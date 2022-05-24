@@ -12,30 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 import dto.Usuario;
 import validator.UsuarioValidator;
 
-/**
- * Servlet implementation class UsuarioRegistroController
- */
+//VISTA DE REGISTRO
 @WebServlet(name = "UsuarioRegistroController", urlPatterns = { "/usuarioRegistro" })
 public class UsuarioRegistroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public UsuarioRegistroController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idparametro = request.getParameter("id");
 		
 		UsuarioValidator validator = new UsuarioValidator(request);
 		
-		if(idparametro == null) {
+		if(idparametro == null) { //idparametro vacio
 			Usuario usuario = new Usuario();
 			request.setAttribute("usuario", usuario);
 		}else {
@@ -47,9 +38,7 @@ public class UsuarioRegistroController extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mensaje;
 		UsuarioValidator validator = new UsuarioValidator(request);

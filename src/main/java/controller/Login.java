@@ -15,59 +15,64 @@ import validator.UsuarioValidator;
 /**
  * Servlet implementation class Login
  */
-@WebServlet(name = "Login", urlPatterns = {"/login"})
+@WebServlet(name = "Login", urlPatterns = { "/login" })
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Login() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher = request.getRequestDispatcher("dist/login.jsp");
-        dispatcher.forward(request, response);
+	public Login() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    response.setContentType("text/html;charset=UTF-8");
-        
-        String usuario = request.getParameter("usuario");
-        String clave = request.getParameter("clave");
-        String result = "";
-        
-        UsuarioValidator validator = new UsuarioValidator(request);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		RequestDispatcher dispatcher = request.getRequestDispatcher("dist/login.jsp");
+		dispatcher.forward(request, response);
+	}
 
-        
-        try {
-        	result = validator.usuarioLogin(usuario,clave);
-        	
-        	if(result == null) {
-        		response.sendRedirect("/softech_web");
-        	}else {
-                Usuario user = new Usuario();
-        		user.setNombre_usuario(usuario);
-        		user.setContrasena(clave);
-    
-            	request.setAttribute("usuario", user);
-            	request.setAttribute("mensaje", result);
-            	RequestDispatcher dispatcher = request.getRequestDispatcher("dist/login.jsp");
-                dispatcher.forward(request, response);
-        	}
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 
-        }catch(Exception e) {
-        	
-        }
+		String usuario = request.getParameter("usuario");
+		String clave = request.getParameter("clave");
+		String result = "";
+
+		UsuarioValidator validator = new UsuarioValidator(request);
+
+		try {
+			result = validator.usuarioLogin(usuario, clave);
+
+			if (result == null) {
+				response.sendRedirect("/softech_web");
+			} else {
+				Usuario user = new Usuario();
+				user.setNombre_usuario(usuario);
+				user.setContrasena(clave);
+
+				request.setAttribute("usuario", user);
+				request.setAttribute("mensaje", result);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("dist/login.jsp");
+				dispatcher.forward(request, response);
+			}
+
+		} catch (Exception e) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("dist/login.jsp");
+			dispatcher.forward(request, response);
+		}
+
 	}
 
 }

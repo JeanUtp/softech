@@ -28,6 +28,7 @@
 
 
 </head>
+<%session.invalidate();%>
 
 <!-- [ auth-signin ] start -->
 <div class="auth-wrapper">
